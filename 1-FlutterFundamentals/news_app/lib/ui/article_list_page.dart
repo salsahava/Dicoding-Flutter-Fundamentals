@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/widgets/platform_widget.dart';
 
-import 'article.dart';
-import 'detail_page.dart';
+import '../data/model/article.dart';
+import 'article_detail_page.dart';
 
 class ArticleListPage extends StatelessWidget {
   Widget _buildList(BuildContext context) {
