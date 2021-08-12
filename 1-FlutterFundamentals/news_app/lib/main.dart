@@ -3,7 +3,7 @@ import 'package:news_app/article.dart';
 import 'package:news_app/detail_page.dart';
 import 'package:news_app/styles.dart';
 
-import 'list_page.dart';
+import 'home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,10 +35,14 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedItemColor: secondaryColor,
+          unselectedItemColor: Colors.grey,
+        ),
       ),
-      initialRoute: NewsListPage.routeName,
+      initialRoute: HomePage.routeName,
       routes: {
-        NewsListPage.routeName: (context) => NewsListPage(),
+        HomePage.routeName: (context) => HomePage(),
         ArticleDetailPage.routeName: (context) => ArticleDetailPage(
               article: ModalRoute.of(context)?.settings.arguments as Article,
             ),
