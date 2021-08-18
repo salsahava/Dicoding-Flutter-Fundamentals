@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:state_management/provider/done_module_provider.dart';
 
-class ModuleList extends StatefulWidget {
-  final List<String> doneModuleList;
-
-  ModuleList({required this.doneModuleList});
-
-  @override
-  _ModuleListState createState() => _ModuleListState();
-}
-
-class _ModuleListState extends State<ModuleList> {
+class ModuleList extends StatelessWidget {
   final List<String> _moduleList = [
     'Modul 1 - Pengenalan Dart',
     'Modul 2 - Memulai Pemrograman dengan Dart',
@@ -28,15 +21,16 @@ class _ModuleListState extends State<ModuleList> {
     return ListView.builder(
       itemCount: _moduleList.length,
       itemBuilder: (context, index) {
-        return ModuleTile(
-          moduleName: _moduleList[index],
-          isDone: widget.doneModuleList.contains(_moduleList[index]),
-          onClick: () {
-            setState(() {
-              widget.doneModuleList.add(_moduleList[index]);
-            });
-          },
-        );
+        return Consumer<DoneModuleProvider>(
+            builder: (context, DoneModuleProvider data, widget) {
+          return ModuleTile(
+            moduleName: _moduleList[index],
+            isDone: data.doneModuleList.contains(_moduleList[index]),
+            onClick: () {
+              data.complete(_moduleList[index]);
+            },
+          );
+        });
       },
     );
   }
