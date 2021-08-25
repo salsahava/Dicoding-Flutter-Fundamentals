@@ -17,7 +17,7 @@ class NotificationHelper {
   static const _channelId = "01";
   static const _channelName = "channel_01";
   static const _channelDesc = "dicoding channel";
-  static late NotificationHelper _instance;
+  static NotificationHelper? _instance;
 
   NotificationHelper._internal() {
     _instance = this;
