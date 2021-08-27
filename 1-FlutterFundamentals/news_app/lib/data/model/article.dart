@@ -28,6 +28,16 @@ class Article {
         publishedAt: article['publishedAt'],
         content: article['content'],
       );
+
+  Map<String, dynamic> toJson() => {
+        "author": author,
+        "title": title,
+        "description": description,
+        "url": url,
+        "urlToImage": urlToImage,
+        "publishedAt": publishedAt,
+        "content": content,
+      };
 }
 
 List<Article> parseArticles(String? json) {
